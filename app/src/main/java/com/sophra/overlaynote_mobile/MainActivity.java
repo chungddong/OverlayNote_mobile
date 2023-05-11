@@ -70,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     String[] line;
 
                     while ((line = reader.readNext()) != null) {
-                        // CSV 데이터 처리
-                        // line 배열에 CSV 한 줄의 데이터가 저장됩니다.
-                        // 리스트에 데이터 추가
                         csvDataList.add(line);
                     }
                     reader.close();
@@ -86,15 +83,16 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                String[] firstRow = csvDataList.get(0);
+                String[] firstRow = csvDataList.get(0); //0번째 라인
                 //String line = String.join(", ", firstRow);
 
-                Log.d("log_overlay", "data : " + firstRow[1]);
+                Log.d("log_overlay", "data(name) : " + firstRow[0]); //이름
+                //Log.d("log_overlay", "data : " + firstRow[1]); //경로 - 컴퓨터경로라 그냥 나중에 옮길때만 사용
+                //Log.d("log_overlay", "data : " + firstRow[2]); //색상
 
-                /*for (String value : csvDataList.get(0)) {
-                    System.out.print(value + " ");
-                    Log.d("log_overlay", "data : " + value);
-                }*/
+                file = new File(rootSD + "/Download/OverlayNote/" + firstRow[0] + ".rtf");
+                Log.d("log_overlay", "rootSD : " + file.getPath());
+                Log.d("log_overlay", "길이 : " + csvDataList.size());
 
 
             } else { //권한이 허용 안되어있을 때
