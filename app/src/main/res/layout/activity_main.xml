@@ -49,6 +49,15 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_marginTop="30dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_t"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginTop="10dp"
+                    android:overScrollMode="never"/>
+
             </LinearLayout>
 
         </LinearLayout>

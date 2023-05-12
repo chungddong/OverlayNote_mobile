@@ -2,6 +2,8 @@ package com.sophra.overlaynote_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
@@ -94,6 +96,24 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("log_overlay", "rootSD : " + file.getPath());
                 Log.d("log_overlay", "길이 : " + csvDataList.size());
 
+                RecyclerView recyclerView = findViewById(R.id.recyclerview_t);
+
+                ArrayList<String> data = new ArrayList<>();
+
+                for(int i = 0; i < csvDataList.size(); i++)
+                {
+                    data.add(csvDataList.get(i)[0]);
+                }
+                //data.add("일식");
+
+                CustomAdapter customAdapter = new CustomAdapter(data);
+                recyclerView.setAdapter(customAdapter); // 어댑터 설정
+
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
+
+
+                recyclerView.setLayoutManager(gridLayoutManager);
+                customAdapter.notifyDataSetChanged();
 
             } else { //권한이 허용 안되어있을 때
 
