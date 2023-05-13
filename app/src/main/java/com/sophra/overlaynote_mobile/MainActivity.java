@@ -99,14 +99,16 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerView recyclerView = findViewById(R.id.recyclerview_t);
 
                 ArrayList<String> data = new ArrayList<>();
+                ArrayList<String> colordata = new ArrayList<>();
 
                 for(int i = 0; i < csvDataList.size(); i++)
                 {
                     data.add(csvDataList.get(i)[0]);
+                    colordata.add(csvDataList.get(i)[2]);
                 }
                 //data.add("일식");
 
-                CustomAdapter customAdapter = new CustomAdapter(data);
+                CustomAdapter customAdapter = new CustomAdapter(data, colordata);
                 recyclerView.setAdapter(customAdapter); // 어댑터 설정
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);

@@ -2,59 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:background="@drawable/round_default"
     android:gravity="center"
     android:outlineProvider="none">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:orientation="vertical"
-        android:padding="10dp">
+        app:strokeWidth="3dp"
+        app:strokeColor="#f00"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="0.7"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/dialog_title"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="노트 제목"
+                android:maxLines="2"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="15dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="21dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dialog_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet est "
+                android:textColor="#484848"
+                android:textSize="16dp" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="2.5"
-            android:gravity="top">
 
-                <TextView
-                    android:id="@+id/dialog_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet est "
-                    android:textColor="#484848"
-                    android:textSize="16dp" />
-
-
-
-            </LinearLayout>
-
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
