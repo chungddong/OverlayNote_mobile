@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.Log;
@@ -25,12 +26,34 @@ import android.widget.TextView;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
+import com.rtfparserkit.parser.IRtfParser;
+import com.rtfparserkit.parser.IRtfSource;
+import com.rtfparserkit.parser.RtfStreamSource;
+import com.rtfparserkit.parser.standard.StandardRtfParser;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.POIDocument;
+import org.apache.poi.extractor.POITextExtractor;
+import org.apache.poi.wp.usermodel.CharacterRun;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.jodconverter.LocalConverter;
+import org.jodconverter.office.LocalOfficeManager;
+import org.jodconverter.office.OfficeException;
+import org.jodconverter.office.OfficeManager;
+import org.w3c.dom.Document;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 //Log.d("log_overlay", "data : " + firstRow[1]); //경로 - 컴퓨터경로라 그냥 나중에 옮길때만 사용
                 //Log.d("log_overlay", "data : " + firstRow[2]); //색상
 
-                file = new File(rootSD + "/Download/OverlayNote/" + firstRow[0] + ".rtf");
+                file = new File(rootSD + "/Download/OverlayNote/" + "깃 명령어" + ".rtf");
                 Log.d("log_overlay", "rootSD : " + file.getPath());
                 Log.d("log_overlay", "길이 : " + csvDataList.size());
 
@@ -100,6 +123,23 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayList<String> data = new ArrayList<>();
                 ArrayList<String> colordata = new ArrayList<>();
+
+
+                InputStream is = null;
+                try {
+                    is = new FileInputStream(file.getPath());
+                    IRtfSource source = new RtfStreamSource(is);
+                    IRtfParser parser = new StandardRtfParser();
+                    MyRtfListener listener = new MyRtfListener();
+                    parser.parse(source, listener);
+
+                    Log.d("log_overlay", "text : " + listener.getText());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
 
                 for(int i = 0; i < csvDataList.size(); i++)
                 {

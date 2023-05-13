@@ -47,7 +47,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet est "
                 android:textColor="#484848"
-                android:textSize="16dp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
 

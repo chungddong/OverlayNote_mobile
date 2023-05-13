@@ -39,6 +39,16 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation 'com.opencsv:opencsv:5.6'
 
+    implementation 'com.1gravity:android-rteditor:1.7.8'
+
+    implementation 'org.jodconverter:jodconverter-local:4.2.2'
+    implementation 'org.apache.poi:poi:5.2.0'
+    implementation 'org.apache.poi:poi-ooxml:5.2.0'
+
+    implementation 'com.github.joniles:rtfparserkit:1.16.0'
+
+
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
