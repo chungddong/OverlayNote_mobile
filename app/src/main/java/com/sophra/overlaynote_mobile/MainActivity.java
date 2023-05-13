@@ -63,12 +63,17 @@ public class MainActivity extends AppCompatActivity {
     private List mylist;
     private final int PERMISSIONS_REQUEST_RESULT = 1;
 
+    public static String filename;
+    public static String color;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE);
+        filename = "";
+        color = "#FFFFFF";
 
     }
 

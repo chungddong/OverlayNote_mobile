@@ -115,6 +115,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     Log.d("log_overlay", "클릭한 메모 : " + dialog_title.getText());
                     Intent intent = new Intent(itemView.getContext(), EditActivity.class);
                     itemView.getContext().startActivity(intent);
+
+                    MainActivity.filename = String.valueOf(dialog_title.getText());
+
+                    //Log.d("log_overlay", "색상 : " + String.format("#%06X", (0xFFFFFF & cardView.getCardBackgroundColor().getDefaultColor())));
+
+                    MainActivity.color = String.format("#%06X", (0xFFFFFF & cardView.getCardBackgroundColor().getDefaultColor()));
                 }
             });
         }
