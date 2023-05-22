@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.os.Environment;
 import android.provider.Settings;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,12 +33,6 @@ import com.rtfparserkit.parser.RtfStreamSource;
 import com.rtfparserkit.parser.standard.StandardRtfParser;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.POIDocument;
-import org.apache.poi.extractor.POITextExtractor;
-import org.apache.poi.wp.usermodel.CharacterRun;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.jodconverter.LocalConverter;
 import org.jodconverter.office.LocalOfficeManager;
 import org.jodconverter.office.OfficeException;
@@ -211,9 +206,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void isdirectory() //경로상에 csv 파일이 있는지 확인하는 코드
-    {
+    private String convertRtfToText(String rtfFilePath) {
+        try {
+            FileInputStream inputStream = new FileInputStream(rtfFilePath);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            bufferedReader.close();
+            inputStreamReader.close();
+            inputStream.close();
 
+            String rtfText = stringBuilder.toString();
+            return Html.fromHtml(rtfText).toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     protected void saveState(){ // 데이터를 저장한다.

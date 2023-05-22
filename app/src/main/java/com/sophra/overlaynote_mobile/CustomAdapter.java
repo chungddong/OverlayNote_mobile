@@ -72,6 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             IRtfSource source = new RtfStreamSource(is);
             IRtfParser parser = new StandardRtfParser();
             MyRtfListener listener = new MyRtfListener();
+
             parser.parse(source, listener);
 
             //Log.d("log_overlay", "각자 불러온 텍스트 : " + listener.getText());
@@ -128,5 +129,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public TextView getTextView() {
             return dialog_title;
         }
+
     }
 }
